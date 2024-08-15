@@ -6,7 +6,12 @@ import '../css/03-feedback.css';
 
 const STORAGE_KEY = 'feedback-form-state';
 const submit = JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? [];
-const formData = {};
+
+const formData = {
+  email: '',
+  message: '',
+};
+
 
 const refs = {
     form:document.querySelector('.js-feedback-form'),
@@ -28,7 +33,7 @@ function onFormSubmit(evt) {
 }
 
 function onTextareaInput(evt) {
-    const message = evt.target.value;
+    formData[evt.target.name] = evt.target.value;
     const stringData = JSON.stringify(formData);
     localStorage.setItem(STORAGE_KEY, stringData);
    
@@ -40,3 +45,4 @@ function populateTextarea() {
         refs.textarea.value = saveMessage;
     }
 }
+
