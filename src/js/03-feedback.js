@@ -13,13 +13,10 @@ const formData = {
 };
 
 
-const refs = {
-    form:document.querySelector('.js-feedback-form'),
-    textarea: document.querySelector('.js-feedback-form textarea'),
-};
+const form = document.querySelector('.js-feedback-form');
 
-refs.form.addEventListener('submit', onFormSubmit);
-refs.textarea.addEventListener('input', throttle(onTextareaInput), 500);
+form.addEventListener('submit', onFormSubmit);
+form.addEventListener('input', throttle(onInputData), 500);
 
 refs.form.addEventListener('input', evt => {
     formData[evt.target.email] = evt.target.message;
@@ -34,15 +31,14 @@ function onFormSubmit(evt) {
 
 function onTextareaInput(evt) {
     formData[evt.target.name] = evt.target.value;
-    const stringData = JSON.stringify(formData);
-    localStorage.setItem(STORAGE_KEY, stringData);
-   
+    const message = JSON.stringify(formData);
+    localStorage.setItem(STORAGE_KEY, message);
 }
 
 function populateTextarea() {
-    const saveMessage = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    const savedMessage = JSON.parse(localStorage.getItem(STORAGE_KEY));
     if (savedMessage) {
-        refs.textarea.value = saveMessage;
+        refs.form.value = savedMessage;
     }
 }
 
