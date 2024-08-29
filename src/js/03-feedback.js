@@ -11,7 +11,7 @@ form.addEventListener('submit', onSubmit);
 
 const {
     elements: { email, message },
-  } = evt.currentTarget;
+  } = evt.target;
 
 function onSubmit (evt) {
     evt.preventDefault();
@@ -20,7 +20,7 @@ function onSubmit (evt) {
         return alert("Please fill in all the fields!");
       }
 
-    evt.currentTarget.reset();
+    evt.target.reset();
     const objJSON = JSON.parse(localStorage.getItem(STORAGE_KEY));
     localStorage.removeItem(STORAGE_KEY);
 }
@@ -28,6 +28,6 @@ function onSubmit (evt) {
 function onInputData(evt) {
     dataForm = { email: email.value, message: message.value };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
-    evt.currentTarget.reset();
+    evt.target.reset();
 }
 
