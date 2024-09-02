@@ -10,8 +10,7 @@ form.addEventListener('input', throttle(onInputData), 500);
 form.addEventListener('submit', onSubmit);
 
 function formEL (evt) { 
-    elements = { email, message };
-    evt.target;
+    const { email, message } = evt.target;
 }
 
 function onSubmit (evt) {
