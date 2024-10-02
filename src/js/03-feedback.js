@@ -13,6 +13,9 @@ function formEL (evt) {
     const { email, message } = evt.target;
 }
 
+
+const email = event.target.email 
+
 function onSubmit (evt) {
     evt.preventDefault();
 
