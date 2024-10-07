@@ -9,12 +9,9 @@ const form = document.querySelector('.js-feedback-form');
 form.addEventListener('input', throttle(onInputData), 500);
 form.addEventListener('submit', onSubmit);
 
-function formEL (evt) { 
-    const { email, message } = evt.target;
-}
-
-
-const email = event.target.email 
+const { 
+    elements: { email, message },
+ } = evt.target;
 
 function onSubmit (evt) {
     evt.preventDefault();

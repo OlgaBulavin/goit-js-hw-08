@@ -5,25 +5,12 @@ const STORAGE_KEY = 'videoplayer-current-time';
 
 
 const iframe = document.querySelector('iframe');
-    const player = new Vimeo.Player(iframe);
+    const player = new Player(iframe);
 
     player.on('timeupdate', throttle(onPlay, 1000));
-    
-    function onPlay({seconds}) {
+    function onPlay({seconds} = 0) {
         localStorage.setItem(STORAGE_KEY, seconds);
     }
-
-
-    player.setCurrentTime(onSavedTimeInStorage).catch(function (error) {
-        switch (error.name) {
-            case 'RangeError':
-            break;
-            default:
-            break;
-        }
-      });
-
-   
 
 
     player.setCurrentTime(localStorage.getItem(STORAGE_KEY));
