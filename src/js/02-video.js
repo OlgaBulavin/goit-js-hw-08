@@ -12,8 +12,8 @@ const iframe = document.querySelector('iframe');
         localStorage.setItem(STORAGE_KEY, seconds);
     }
 
-
-    player.setCurrentTime(localStorage.getItem(STORAGE_KEY));
-
+    if (localStorage.getItem(STORAGE_KEY)) {
+        player.setCurrentTime(localStorage.getItem(STORAGE_KEY));
+  }
 
     
