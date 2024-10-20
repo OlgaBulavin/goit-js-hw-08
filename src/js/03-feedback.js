@@ -27,6 +27,6 @@ function onSubmit (evt) {
 function onInputData(evt) {
     dataForm = { email: email.value, message: message.value };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
-    evt.target.reset();
+    
 }
 
