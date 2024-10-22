@@ -8,17 +8,15 @@ const STORAGE_KEY = 'feedback-form-state';
 const form = document.querySelector('.js-feedback-form');
 form.addEventListener('input', throttle(onInputData), 500);
 form.addEventListener('submit', onSubmit);
-populateTextarea;
+populateTextarea();
 
 const  { email, message } = form;
 
 function onSubmit (evt) {
     evt.preventDefault();
-
     if (email.value === "" || message.value === "") {
         return alert("Please fill in all the fields!");
       }
-
     evt.target.reset();
     const objJSON = JSON.parse(localStorage.getItem(STORAGE_KEY));
     localStorage.removeItem(STORAGE_KEY);
